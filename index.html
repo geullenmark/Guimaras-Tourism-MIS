@@ -3,47 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
-    <script src="./handler.js" defer></script>
+    <title>Sign In</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Firebase version 8.x -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 
     <style>
         .container {
-            width: 67.5%;
-            margin-top: 14px;
-            margin-bottom: 14px;
+            max-width: 400px;
+            margin-top: 50px;
         }
     </style>
-
-    <title>PH Address Selector</title>
 </head>
 <body>
-    
-    <div class="container">
-        <label for="region" class="form-label" style="font-size: 16px;">Region</label>
-        <select class="form-select p-2" id="region" aria-label="region selection">
-            <option selected value="">Please Select a Region First</option>
-        </select>
-    </div>
 
-    <div class="container">
-        <label for="province" class="form-label" style="font-size: 16px;">Province</label>
-        <select name="province" class="form-select p-2" id="province" aria-label="province selection"></select>
-    </div>
+<div class="container">
+    <h2>Sign In</h2>
+    <form id="signin-form">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign In</button>
+    </form>
 
-    <div class="container">
-        <label for="city" class="form-label" style="font-size: 16px;">City / Municipality</label>
-        <select name="city" class="form-select p-2" id="city" aria-label="city selection"></select>
-    </div>
+    <p class="mt-3">
+        Don't have an account? <a href="signup.html">Sign Up</a>
+    </p>
+</div>
 
-    <div class="container">
-        <label for="barangay" class="form-label" style="font-size: 16px;">Barangay</label>
-        <select name="barangay" class="form-select p-2" id="barangay" aria-label="barangay selection"></select>
-    </div>
+<!-- Your JavaScript file at the end of the body -->
+<script src="signin.js"></script>
 
 </body>
 </html>
