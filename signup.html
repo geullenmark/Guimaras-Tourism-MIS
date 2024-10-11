@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+          rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <script src="signup.js" type="module"></script>
+
+    <style>
+        .container {
+            max-width: 600px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Sign Up</h2>
+    <form id="signup-form">
+        <h4>Personal Information</h4>
+        <div class="mb-3">
+            <label for="last_name" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="last_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="first_name" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="first_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="birthday" class="form-label">Birthday</label>
+            <input type="date" class="form-control" id="birthday" required>
+        </div>
+        <div class="mb-3">
+            <label for="sex" class="form-label">Sex</label>
+            <select class="form-select" id="sex" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="civil_status" class="form-label">Civil Status</label>
+            <select class="form-select" id="civil_status" required>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Widowed">Widowed</option>
+                <option value="Separated">Separated</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="nationality" class="form-label">Nationality</label>
+            <select class="form-select" id="nationality" required>
+                <option value="Filipino">Filipino</option>
+                <option value="American">American</option>
+                <option value="British">British</option>
+                <option value="Canadian">Canadian</option>
+                <option value="Australian">Australian</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="contact_number" class="form-label">Contact Number</label>
+            <input type="number" class="form-control" id="contact_number" required>
+        </div>
+
+        <h4>Country of Residence</h4>
+        <div class="mb-3">
+            <label for="countryOfResidence" class="form-label">Country of Residence</label>
+            <select class="form-select" id="countryOfResidence" required>
+                <option value="" selected disabled>Select Country of Residence</option>
+                <option value="Philippines">Philippines</option>
+                <option value="United States">United States</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div id="localAddress" style="display: none;">
+            <h4>Local Address</h4>
+            <div class="mb-3">
+                <label for="region" class="form-label">Region</label>
+                <select class="form-select" id="region" aria-label="region selection">
+                    <option selected value="">Please Select a Region</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="province" class="form-label">Province</label>
+                <select name="province" class="form-select" id="province" aria-label="province selection"></select>
+            </div>
+            <div class="mb-3">
+                <label for="city" class="form-label">City / Municipality</label>
+                <select name="city" class="form-select" id="city" aria-label="city selection"></select>
+            </div>
+            <div class="mb-3">
+                <label for="city" class="form-label">Barangay</label>
+                <select name="city" class="form-select" id="barangay" aria-label="barangay selection"></select>
+            </div>
+        </div>
+
+        <h4>Additional Information</h4>
+        <div class="mb-3">
+            <label for="purpose_of_travel" class="form-label">Purpose of Travel</label>
+            <select class="form-select" id="purpose_of_travel" required>
+                <option value="Business">Business</option>
+                <option value="Leisure">Leisure</option>
+                <option value="MICE">MICE</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="mb-3" id="otherPurposeInput" style="display: none;">
+            <label for="otherPurpose" class="form-label">Please specify</label>
+            <input type="text" class="form-control" id="otherPurpose">
+        </div>
+
+        <h4>Credentials</h4>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+</div>
+
+</body>
+
+<script src="handler.js" type="module"></script>
+</html>

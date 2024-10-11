@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+          rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <!-- Firebase version 9.x -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js"></script>
+
+    <!-- QR Code Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+    <style>
+        /* Center the content */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height */
+            margin: 0; /* Remove default margin */
+        }
+        .container {
+            text-align: center; /* Center text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Your QR Code</h1>
+        <div id="qrCodeContainer"></div> <!-- QR Code will be rendered here -->
+        <p id="userIdText" class="mt-3"></p> <!-- UserID will be displayed here -->
+        <button id="logoutBtn" class="btn btn-danger mt-3">Logout</button>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js';
+        import { getAuth, signOut } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js';
+
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCeSy9qMibAAYCZg5cipJ8097qeh3vwF08",
+            authDomain: "testingapp-589a1.firebaseapp.com",
+            databaseURL: "https://testingapp-589a1-default-rtdb.firebaseio.com",
+            projectId: "testingapp-589a1",
+            storageBucket: "testingapp-589a1.appspot.com",
+            messagingSenderId: "920622301670",
+            appId: "1:920622301670:web:8937030299600fede51627",
+            measurementId: "G-ZJP7HRFH98"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Function to extract userId from URL parameters
+        function getUserIdFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('userId');
+        }
+
+        // Display UserID and generate QR code
+        const userIdText = document.getElementById('userIdText');
+        const userId = getUserIdFromURL();
+        if (userId) {
+            userIdText.textContent = `UserID: ${userId}`; // Display UserID
+            generateQRCode(userId); // Generate QR code with UserID
+        } else {
+            userIdText.textContent = 'No UserID found.'; // Fallback message
+        }
+
+        // Function to generate QR code
+        function generateQRCode(userId) {
+            const qrCodeContainer = document.getElementById('qrCodeContainer');
+            const qr = new QRious({
+                element: document.createElement('canvas'),
+                value: userId,
+                size: 250
+            });
+            qrCodeContainer.appendChild(qr.canvas); // Append the QR code to the container
+        }
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            signOut(auth).then(() => {
+                console.log('User signed out.');
+                window.location.href = "signin.html"; // Redirect to sign-in page
+            }).catch((error) => {
+                console.error('Sign-out error:', error);
+                alert('Error signing out: ' + error.message);
+            });
+        });
+    </script>
+</body>
+</html>
